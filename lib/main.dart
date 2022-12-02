@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // home: const SignInScreen(),
-      home: HomeScreen(),
+      home: StarScreen(),
     );
   }
 }
