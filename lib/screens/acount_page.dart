@@ -24,7 +24,6 @@ class _AccountPageState extends State<AccountPage> {
             child: Column(
               children: [
                 Container(
-                  // padding: EdgeInsets.only(left: 21.0, top: 30.0),
                   child: Column(
                     children: [
                       Row(
