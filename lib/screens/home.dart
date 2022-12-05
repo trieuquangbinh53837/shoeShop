@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:no_login/screens/acount_page.dart';
+import 'package:no_login/pages/acount_page.dart';
 import 'package:no_login/screens/product.dart';
 import 'package:no_login/screens/search_page.dart';
 import 'package:no_login/screens/signin_screen.dart';
@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
     CartegoryPage(),
     SearchPage(),
     ProductPage(),
-    AccountPage(),
+    HomeView(),
 
     // ChatPage(),
     // SpacesPage(),

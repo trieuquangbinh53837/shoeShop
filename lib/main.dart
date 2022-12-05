@@ -4,34 +4,51 @@ import 'package:no_login/screens/home.dart';
 import 'package:no_login/screens/signin_screen.dart';
 import 'package:no_login/screens/start_screen.dart';
 
+import 'package:provider/provider.dart';
+import './providers/theme_provider.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  runApp( MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (ctx) => ThemeProvider(),
+        ),
+        //Your other providers goes here...
+      ],
+      child: Consumer<ThemeProvider>(
+        builder: (ctx, themeObject, _) => MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Dynamic Theme Demo',
+          themeMode: themeObject.mode,
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+            primaryColor: Colors.blue[600],
+            accentColor: Colors.amber[700],
+            brightness: Brightness.light,
+            backgroundColor: Colors.grey[100],
+            fontFamily: 'Karla',
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+          ),
+          darkTheme: ThemeData(
+            primarySwatch: Colors.blue,
+            primaryColor: Colors.blue[300],
+            accentColor: Colors.amber,
+            brightness: Brightness.dark,
+            backgroundColor: Colors.grey[900],
+            fontFamily: 'Karla',
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+          ),
+          home: HomeScreen(),
+        ),
       ),
-      // home: const SignInScreen(),
-      home: StarScreen(),
     );
   }
 }
