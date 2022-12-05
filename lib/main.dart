@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
             fontFamily: 'Karla',
             visualDensity: VisualDensity.adaptivePlatformDensity,
           ),
-          home: HomeScreen(),
+          home: StarScreen(),
         ),
       ),
     );
